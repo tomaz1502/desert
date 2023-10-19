@@ -1,4 +1,5 @@
 (executable
  (public_name desert)
  (name main)
- (libraries desert))
+ (libraries desert)
+)

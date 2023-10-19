@@ -1,2 +1,5 @@
 (library
- (name desert))
+ (name desert)
+ (libraries NineNineProblems)
+)
+
