@@ -1,0 +1,7 @@
+(library
+ (name Aoc19)
+  (modules
+    day_one
+  )
+)
+

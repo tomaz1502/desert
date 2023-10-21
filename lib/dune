@@ -1,5 +1,5 @@
 (library
  (name desert)
- (libraries NineNineProblems)
+ (libraries NineNineProblems Aoc19)
 )
 
