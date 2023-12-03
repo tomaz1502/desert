@@ -1,1 +1,1 @@
-let () = print_int NineNineProblems.Two.g
+let () = Aoc23.Day_one_hard.solve

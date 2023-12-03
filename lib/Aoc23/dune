@@ -1,8 +1,8 @@
 (library
- (name Aoc19)
+ (name Aoc23)
  (modules
    day_one
-   day_two
+   day_one_hard
  )
  (libraries Util)
 )
