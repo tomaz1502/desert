@@ -37,5 +37,5 @@ let solve =
     for i = 0 to List.length lines - 1 do
         sum := !sum + (f (List.nth lines i));
     done;
-    print_int !sum;
-    print_newline ()
+    (* print_int !sum; *)
+    (* print_newline () *)

@@ -4,6 +4,6 @@
    day_one
    day_two
  )
- (libraries Util)
+ (libraries Util angstrom)
 )
 
