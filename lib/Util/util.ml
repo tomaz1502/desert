@@ -11,11 +11,37 @@ let read_file (file_name: string) : string list =
     close_in chan;
     result
 
+let rec take_while (p : 'a -> bool) (xs : 'a list) : 'a list =
+    match xs with
+    | [] -> []
+    | h::t -> if p h then h :: take_while p t else []
+
+let rec drop_while (p : 'a -> bool) (xs : 'a list) : 'a list =
+    match xs with
+    | [] -> []
+    | h::t -> if p h then drop_while p t else xs
+
+(* returns take list, drop list and number of elements dropped *)
+let rec cnt_take_drop (p : 'a -> bool) (xs : 'a list) : ('a list * 'a list * int) =
+    match xs with
+    | [] -> ([], [], 0)
+    | h::t ->
+        if p h then
+            let (xs1, xs2, cnt) = cnt_take_drop p t in
+            (h :: xs1, xs2, cnt + 1)
+        else ([], xs, 0)
+
 let rec drop (n : int) (xs : 'a list) : 'a list =
     match n, xs with
     | 0, _        -> xs
     | _, []       -> []
     | _, (_::xs') -> drop (n - 1) xs'
+
+let rec take (n : int) (xs : 'a list) : 'a list =
+    match n, xs with
+    | 0, _    -> []
+    | _, []   -> []
+    | _, h::t -> h :: take (n - 1) t
 
 let rec all (f : 'a -> bool) (xs : 'a list) : bool =
     match xs with
@@ -34,3 +60,17 @@ let rec split3 (xs : ('a * 'b * 'c) list) : ('a list) * ('b list) * ('c list) =
             let (a', b', c') = split3 t in
             (a::a', b::b', c::c')
 
+let comp f g x = f (g x)
+
+let find_indices (p : 'a -> bool) (xs : 'a list) : int list =
+    let rec aux i = function
+        | [] -> []
+        | x::xs' ->
+            let r = aux (i + 1) xs' in
+            if p x then i :: r else r
+    in
+    aux 0 xs
+
+let opt_cnt = function
+    | None -> 0
+    | Some _ -> 1

@@ -39,7 +39,7 @@ let aux =
     | Some ';' -> advance 1 *> return ()
     | _ -> fail ""
 
-let parse_game =
+let game_p =
     not_white_space_p *>
     white_space_p     *>
     natural_p         >>= fun game_id ->
@@ -60,7 +60,7 @@ let calc (g : game) : int =
     r_max * g_max * b_max
 
 let process_line (line : string) : int =
-    match parse_string ~consume:Prefix parse_game line with
+    match parse_string ~consume:Prefix game_p line with
     | Ok    g -> calc g
     | Error _ -> failwith "failed parsing game";;
 

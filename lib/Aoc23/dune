@@ -1,11 +1,5 @@
 (library
  (name Aoc23)
- (modules
-   day_one
-   day_one_hard
-   day_two
-   day_two_hard
- )
  (libraries Util core angstrom)
 )
 
