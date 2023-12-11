@@ -65,5 +65,5 @@ let process_line (line : string) : int =
     | Error _ -> failwith "failed parsing game";;
 
 let solve =
-  let lines = read_file "./lib/Aoc23/day_two_input" in
+  let lines = read_file "./data/day_two_input" in
   List.fold_left (+) 0 (List.map process_line lines) 

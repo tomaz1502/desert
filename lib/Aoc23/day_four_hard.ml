@@ -37,7 +37,7 @@ let update (occs : int array ref) (i : int) (posis : int) (amt : int) : unit =
   done
 
 let solution: int =
-  let lines = read_file "./lib/Aoc23/day_four_input" in
+  let lines = read_file "./data/day_four_input" in
   let parser = parse_string ~consume:Prefix card_p in
   let vals = List.map parser lines in
   let occs = ref (Array.make (List.length lines) 1) in

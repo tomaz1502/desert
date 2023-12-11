@@ -32,7 +32,7 @@ let print_list (xs : int list) =
   print_newline ()
 
 let answer: int =
-  let lines = read_file "./lib/Aoc23/day_four_input_cp" in
+  let lines = read_file "./test/day_four_input_cp" in
   let parser = parse_string ~consume:Prefix card_p in
   let vals = List.map parser lines in
   List.fold_left (fun acc res ->

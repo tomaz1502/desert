@@ -32,10 +32,5 @@ let f (line : string) =
     10 * !x + !y
 
 let solve =
-    let lines = read_file "./lib/Aoc23/day_one_input" in
-    let sum = ref 0 in
-    for i = 0 to List.length lines - 1 do
-        sum := !sum + (f (List.nth lines i));
-    done;
-    (* print_int !sum; *)
-    (* print_newline () *)
+    let lines = read_file "./data/day_one_input" in
+    List.fold_left (fun acc curr -> acc + f curr) 0 lines

@@ -55,6 +55,6 @@ let calc (mat : matrix) : int =
     !answer
 
 let solve =
-    let lines = read_file "./lib/Aoc23/day_three_input" in
+    let lines = read_file "./data/day_three_input" in
     let m = List.map (comp Array.of_seq String.to_seq) lines in
     calc (Array.of_list m)
