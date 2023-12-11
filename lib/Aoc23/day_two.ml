@@ -14,15 +14,6 @@ let is_ok (r : round) : bool =
         | (Blue,  x) -> x <= 14 in
     all check r
 
-let is_digit = function '0'..'9' -> true | _ -> false
-let is_alfa  = function 'a'..'z' -> true | 'A'..'Z' -> true | _ -> false
-let is_white_space = function ' ' -> true | _ -> false
-
-let not_white_space_p = take_while (fun x -> x |> is_white_space |> not)
-let white_space_p     = take_while is_white_space
-let name_p            = take_while is_alfa
-let natural_p         = take_while1 is_digit
-
 let color_p =
     name_p >>= function
              | "red"   -> return Red

@@ -26,3 +26,4 @@ let table2 (id1 : string) (id2 : string) (e : bool_expr) : (bool * bool * bool) 
     in List.map go vals;;
 
 let test = table2 "a" "b" (And (Var "a", Or (Var "a", Var "b")));;
+

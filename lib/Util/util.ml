@@ -11,6 +11,14 @@ let read_file (file_name: string) : string list =
     close_in chan;
     result
 
+let find_index (p : 'a -> bool) (xs : 'a list) : int option =
+    let rec aux (i : int) (curr : 'a list) =
+        match curr with
+        | [] -> None
+        | x'::xs' -> if p x' then Some i else aux (i + 1) xs'
+    in
+    aux 0 xs
+
 let rec take_while (p : 'a -> bool) (xs : 'a list) : 'a list =
     match xs with
     | [] -> []
@@ -74,3 +82,16 @@ let find_indices (p : 'a -> bool) (xs : 'a list) : int list =
 let opt_cnt = function
     | None -> 0
     | Some _ -> 1
+
+
+let is_digit = function '0'..'9' -> true | _ -> false
+let is_alfa  = function 'a'..'z' -> true | 'A'..'Z' -> true | _ -> false
+let is_white_space = function ' ' -> true | _ -> false
+let is_colon = function ':' -> true | _ -> false
+
+let not_white_space_p = Angstrom.take_while (fun x -> x |> is_white_space |> not)
+let white_space_p     = Angstrom.take_while is_white_space
+let pipe_p            = Angstrom.take_while (function '|' -> true | _ -> false)
+let name_p            = Angstrom.take_while is_alfa
+let natural_p         = Angstrom.take_while1 is_digit
+let not_colon_p       = Angstrom.take_while (comp not is_colon)

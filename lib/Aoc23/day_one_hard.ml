@@ -4,7 +4,7 @@ let conv_ascii (c : char) = int_of_char c - int_of_char '0'
 
 let numbers = ["one"; "two"; "three"; "four"; "five"; "six"; "seven"; "eight"; "nine"]
 
-let idx (n : string) = List.find_index (fun x -> x = n) numbers
+let idx (n : string) = find_index (fun x -> x = n) numbers
 
 let update (v : int) (x : int ref) (y : int ref) =
     if !x = -1 then x := v;

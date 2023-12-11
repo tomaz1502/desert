@@ -3,5 +3,6 @@
  (modules
    util
  )
+ (libraries angstrom)
 )
 
