@@ -2,4 +2,5 @@
  (public_name desert)
  (name main)
  (libraries desert)
+ (preprocess (pps ppx_getenv))
 )

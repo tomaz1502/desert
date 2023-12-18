@@ -1,3 +1,3 @@
-open Aoc23.Day_one
+(* open Aoc23.Day_one *)
 
-let () = print_int solve
+let () = Printf.printf "This program has been compiled by user: %s\n" [%getenv "USER"]
