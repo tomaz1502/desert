@@ -11,6 +11,15 @@ let read_file (file_name: string) : string list =
     close_in chan;
     result
 
+let rec show_list (show: 'a -> string) (xs: 'a list): string =
+    match xs with
+    | [] -> "\n"
+    | hd::tl ->
+            show hd ^ " " ^ (show_list show tl)
+
+let scan_int_list (s: string): int list =
+    String.split_on_char ' ' s |> List.filter_map int_of_string_opt
+
 let find_index (p : 'a -> bool) (xs : 'a list) : int option =
     let rec aux (i : int) (curr : 'a list) =
         match curr with
@@ -56,6 +65,9 @@ let rec all (f : 'a -> bool) (xs : 'a list) : bool =
     | [] -> true
     | x :: xs' -> if not (f x) then false else all f xs'
 
+let minimum (xs: int list): int =
+    List.fold_left min Int.max_int xs
+
 let assoc_def (x : 'a) (xs : ('a * 'b) list) (def : 'b) : 'b =
     match List.assoc_opt x xs with
     | None -> def
@@ -69,6 +81,7 @@ let rec split3 (xs : ('a * 'b * 'c) list) : ('a list) * ('b list) * ('c list) =
             (a::a', b::b', c::c')
 
 let comp f g x = f (g x)
+let flip f x y = f y x
 
 let find_indices (p : 'a -> bool) (xs : 'a list) : int list =
     let rec aux i = function
@@ -82,7 +95,6 @@ let find_indices (p : 'a -> bool) (xs : 'a list) : int list =
 let opt_cnt = function
     | None -> 0
     | Some _ -> 1
-
 
 let is_digit = function '0'..'9' -> true | _ -> false
 let is_alfa  = function 'a'..'z' -> true | 'A'..'Z' -> true | _ -> false

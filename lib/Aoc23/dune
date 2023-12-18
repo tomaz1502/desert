@@ -1,5 +1,5 @@
 (library
  (name Aoc23)
- (libraries Util core angstrom)
+ (libraries Util angstrom)
 )
 
